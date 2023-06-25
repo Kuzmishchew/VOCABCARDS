@@ -1,4 +1,4 @@
-[
+let VOCAB_JSON = `[
 	{
 		"english": "accelerate",
 		"russian": "ускорить"
@@ -379,4 +379,6 @@
 		"english": "verbatim",
 		"russian": "дословно"
 	}
-]
+]`;
+
+export {VOCAB_JSON};
