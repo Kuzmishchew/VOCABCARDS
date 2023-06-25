@@ -30,8 +30,8 @@ body{
     height: 50%;
 
     border-radius: 20px;
-    
-    transition: 1s;
+
+    cursor: pointer;
 }
 .card-box_text__or {
     background-color: #FFA07A;
