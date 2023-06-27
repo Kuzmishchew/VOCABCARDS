@@ -4,26 +4,37 @@ const ENGLISH = document.querySelector(".text_or");
 const RUSSIAN = document.querySelector(".text_tr");
 const RUSSIAN_CARD = document.querySelector(".card-box_text__tr");
 const NEXT_BUTTON = document.querySelector(".control-box_next");
+const GOOGLE_SHEET_LINK = "https://script.google.com/macros/s/AKfycbxg3vajlT-YS2p9DLClkFn9Ebv2uuhjUV-cQH9Vl5Qt5byVp1dnLsHaFtIOJAp8n2bk/exec";
+let GOOGLE_SHEET;
 
-function getRandomInt() {
+fetch(GOOGLE_SHEET_LINK)
+  .then(resp => resp.json())
+  .then(data => {
+    GOOGLE_SHEET = data.result; 
+    console.log(GOOGLE_SHEET);
+    getRandomWord(GOOGLE_SHEET);
+});
+
+
+function getRandomInt(vocab) {
     let min = Math.ceil(0);
-    let max = Math.floor(VOCAB.length + 1);
+    let max = Math.floor(vocab.length + 1);
     return Math.floor(Math.random() * (max - min)) + min; //Максимум не включается, минимум включается
 }
-function getRandomWord() {
-    let random = getRandomInt();
-    ENGLISH.innerHTML = VOCAB[random].english;
-    RUSSIAN.innerHTML = VOCAB[random].russian;
+function getRandomWord(vocab) {
+    let random = getRandomInt(vocab);
+    ENGLISH.innerHTML = vocab[random][0];
+    RUSSIAN.innerHTML = vocab[random][1];
 }
 function showWord() {
     RUSSIAN_CARD.style.color = '#000000';
 }
 function changeWord() {
     RUSSIAN_CARD.style.color = '#FFFFE0';
-    getRandomWord();
+    getRandomWord(GOOGLE_SHEET);
 }
 
-getRandomWord();
-RUSSIAN_CARD.addEventListener('click', () => showWord());
+
+RUSSIAN_CARD.addEventListener('click', () => showWord(GOOGLE_SHEET));
 NEXT_BUTTON.addEventListener('click', () => changeWord());
-console.log(VOCAB);
+// console.log(VOCAB);
