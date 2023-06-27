@@ -4,7 +4,7 @@ const ENGLISH = document.querySelector(".text_or");
 const RUSSIAN = document.querySelector(".text_tr");
 const RUSSIAN_CARD = document.querySelector(".card-box_text__tr");
 const NEXT_BUTTON = document.querySelector(".control-box_next");
-const GOOGLE_SHEET_LINK = "https://script.google.com/macros/s/AKfycbxg3vajlT-YS2p9DLClkFn9Ebv2uuhjUV-cQH9Vl5Qt5byVp1dnLsHaFtIOJAp8n2bk/exec";
+const GOOGLE_SHEET_LINK = "https://script.google.com/macros/s/AKfycbzpjzhZoaH0FnsILt1Up1D7NfGh82pNN-U7VkZVzh8jcJpE1D-tt0gZH6xut6IrLQ9z/exec";
 let GOOGLE_SHEET;
 
 fetch(GOOGLE_SHEET_LINK)
